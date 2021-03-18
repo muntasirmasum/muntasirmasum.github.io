@@ -1,5 +1,17 @@
 ---
-title: "My Website"
+title: " "
+pagetitle: "Muntasir Masum"
 ---
 
-Hello!
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
+
+<img src="images/muntasir_masum.jpg" style="width:25%; border:5px solid; margin-right: 20px" align="left">
+
+I am a PhD Candidate in the [Department of Demography](https://hcap.utsa.edu/demography/) at the [University of Texas at San Antonio (UTSA)](https://www.utsa.edu/).
+
+I also a Graduate Research Assistant at the [Institute for Demographic and Socioeconomic Research (IDSER)](https://idser.utsa.edu/) at UTSA. 
+
+My research interests are mortality, aging, health disparities, mental health, causal inference.
+
+I earned my MA in Sociology in 2012 from the McMaster University in Hamilton, ON, Canada.

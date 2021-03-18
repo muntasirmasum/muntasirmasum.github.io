@@ -1,8 +1,28 @@
-name: "my-website"
+name: "Muntasir Masum"
+output_dir: "."
 navbar:
-  title: "My Website"
+  title: "Muntasir Masum"
   left:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Research"
+      href: research.html
+    - text: "Speaking"
+      href: talks.html
+    - text: "Programming"
+      href: software.html
+    - text: "Teaching"
+      href: teaching.html
+  right:
+    - icon: fa-envelope fa-lg
+      href: contact.html
+    - icon: ai-cv ai-lg
+      href: ./files/Masum_Muntasir_CV.pdf
+    - icon: fa-github fa-lg
+      href: https://github.com/muntasirmasum
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/Muntasir_M
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/muntasirmasum/
+output:
+  html_document:
+    theme: paper
+    css: 'styles.css'
