@@ -1,18 +1,27 @@
 ---
 title: " "
 pagetitle: "Muntasir Masum"
+comments: false
+description: Muntasir Masum is a demographer at the University of Texas at San Antonio
 ---
 
 <link rel="stylesheet" href="styles.css" type="text/css"> 
 <link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
 
-<img src="images/muntasir_masum.jpg" style="width:25%; border:5px solid; margin-right: 20px" align="left"/>
+<div class = "row">
+<br>  
+<div class = "col-md-3">
+<br>
 
-I am a **PhD Candidate** in the [Department of Demography](https://hcap.utsa.edu/demography/) at the [University of Texas at San Antonio (UTSA)](https://www.utsa.edu/).
+<center><img id="img-me" src="images/muntasir_masum.jpg" alt="Muntasir Masum" style="width:500%; border:5px solid; margin-right: 20px" height="auto"></center>
+</div>
 
-I am also a **Graduate Research Assistant** in the TxDOT project at the [Institute for Demographic and Socioeconomic Research (IDSER)](https://idser.utsa.edu/) at UTSA.
+<div class = "col-md-9">
 
-My research interests are:
+
+>I am a **PhD Candidate** in the [Department of Demography](https://hcap.utsa.edu/demography/) at the [University of Texas at San Antonio (UTSA)](https://www.utsa.edu/). Currently I am employed as a **Graduate Research Assistant** in the TxDOT project at the [Institute for Demographic and Socioeconomic Research (IDSER)](https://idser.utsa.edu/) at UTSA.
+
+#### My research interests are:
 
       - Mortality 
       - Aging 
@@ -21,4 +30,4 @@ My research interests are:
       - Mental Health 
       - Causal inference.
 
-I earned my MA in Sociology in 2012 from the McMaster University in Hamilton, ON, Canada. I am expecting to finish my dissertation in Spring 2021. I am looking for a postdoctoral position to further my career in academia.
+>I earned my MA in Sociology in 2012 from the McMaster University in Hamilton, ON, Canada. I am expecting to finish my dissertation in Spring 2021. I am looking for a postdoctoral position to further my career in academia.

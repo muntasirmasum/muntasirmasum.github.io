@@ -12,14 +12,16 @@ navbar:
     - text: "Teaching"
       href: teaching.html
     - text: "Blog"
+      icon: fa-rss
       href: blog.html
     - text: "Coding"
       href: coding.html
+    - text: CV
+      href: ./files/Masum_Muntasir_CV.pdf
+      
   right:
     - icon: fas fa-envelope-open
       href: mailto:muntasir1124@gmail.com
-    - icon: ai-cv ai-lg
-      href: ./files/Masum_Muntasir_CV.pdf
     - icon: fab fa-github
       href: https://github.com/muntasirmasum
     - icon: fab fa-twitter
@@ -29,4 +31,4 @@ navbar:
 output:
   html_document:
     theme: darkly
-    css: 'styles.css'
+    css: ['css/styles.css', 'css/academicons.min.css']
