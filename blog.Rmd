@@ -6,15 +6,7 @@ pagetitle: "Muntasir Masum"
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
 
-## Affiliation
-  - Population Association of America
-  - American Sociological Association
-  - Southern Demographic Association
-  - Interdisciplinary Association for Population Health Science
-
-## Recognition by Colleagues
 ### [IAPHS Member of the Month](https://iaphs.org/member-of-the-month-muntasir-masum/)
 
-## [Why I joined IAPHS](https://iaphs.org/embracing-iaphs-and-interdisciplinary-research-a-graduate-students-journey/)
-
+### [Why I joined IAPHS](https://iaphs.org/embracing-iaphs-and-interdisciplinary-research-a-graduate-students-journey/)
 

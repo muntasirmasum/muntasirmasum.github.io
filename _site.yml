@@ -3,6 +3,8 @@ output_dir: "."
 navbar:
   title: "Muntasir Masum"
   left:
+    - text: "About"
+      href: about.html
     - text: "Research"
       href: research.html
     - text: "Conferences"

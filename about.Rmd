@@ -1,0 +1,13 @@
+---
+title: " "
+pagetitle: "Muntasir Masum"
+---
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
+
+## Affiliation
+  - Population Association of America
+  - American Sociological Association
+  - Southern Demographic Association
+  - Interdisciplinary Association for Population Health Science
