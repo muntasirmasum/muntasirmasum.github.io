@@ -13,9 +13,9 @@ I have been interested in adult health and disparities from an early stage of gr
 
 My doctoral thesis is a study of alcohol drinking behavior and adult mortality risks in the United States. This work explores key demographic, socioeconomic, and anthropometric factors at the individual level that contribute to alcohol drinking and its consequence on adult mortality and health outcomes. Structured across three objectives, my dissertation focuses on:
 
- - 1. cohort mortality variation and the minimum legal drinking age act (MLDA) of 1984; 
- - 2. recent changes among women’s labor market participation and alcohol consumption related mortality risks; and 
- - 3. physical and mental health outcomes among young adults attributable to drinking and risky behavior.
+    - cohort mortality variation and the minimum legal drinking age act (MLDA) of 1984; 
+    - recent changes among women’s labor market participation and alcohol consumption related mortality risks; and 
+    - physical and mental health outcomes among young adults attributable to drinking and risky behavior.
 
 
 ## Professional Affiliation
