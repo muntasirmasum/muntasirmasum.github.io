@@ -9,8 +9,11 @@ navbar:
       href: talks.html
     - text: "Teaching"
       href: teaching.html
+    - text: "Blog"
+      href: blog.html
     - text: "Coding"
       href: coding.html
+
   right:
     - icon: fa-envelope-o
       href: contact.html
