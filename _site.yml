@@ -17,15 +17,15 @@ navbar:
       href: coding.html
 
   right:
-    - icon: fa-envelope-o
+    - icon: fa-envelope fa-lg
       href: contact.html
     - icon: ai-cv ai-lg
       href: ./files/Masum_Muntasir_CV.pdf
-    - icon: fa-github
+    - icon: fa-github fa-lg
       href: https://github.com/muntasirmasum
-    - icon: fa-twitter
+    - icon: fa-twitter fa-lg
       href: https://twitter.com/Muntasir_M
-    - icon: fa-linkedin
+    - icon: fa-linkedin fa-lg
       href: https://www.linkedin.com/in/muntasirmasum/
 output:
   html_document:
