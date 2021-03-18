@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Muntasir Masum - UTSA Department of Demography" />
+
+
+<title>Demography Informal Methods Seminar - Regression Discontinuity</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Muntasir Masum</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="research.html">Research</a>
+</li>
+<li>
+  <a href="talks.html">Conferences</a>
+</li>
+<li>
+  <a href="teaching.html">Teaching</a>
+</li>
+<li>
+  <a href="coding.html">Coding</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="contact.html">
+    <span class="fas fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="./files/Masum_Muntasir_CV.pdf">
+    <span class="ai ai-cv ai-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/muntasirmasum">
+    <span class="fas fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/Muntasir_M">
+    <span class="fas fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/muntasirmasum/">
+    <span class="fas fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Demography Informal Methods Seminar - Regression Discontinuity</h1>
+<h4 class="author">Muntasir Masum - UTSA Department of Demography</h4>
+<h4 class="date">6/28/2020</h4>
+
+</div>
+
+
+<div id="regression-discontinuity" class="section level2">
+<h2>Regression Discontinuity</h2>
+<ul>
+<li>A regression discontinuity design (RDD) is a useful quasi-experimental approach to determine the effect of an intervention such as a program, or a policy.</li>
+<li>The RD design was originally proposed by <a href="https://pdfs.semanticscholar.org/0ebb/29615b1569e9ee219f536c9ad64ae5fce36d.pdf">Thistlethwaite and Campbell (1960)</a> to estimate treatment effects in a non-experimental setting where treatment is determined by whether an observed ‘assignment’ variable exceeds a known cutoff point.</li>
+<li>Used when researchers are unable to randomly assign subjects to treatment and control groups.</li>
+<li>Does not rely upon matching to equate experimental and control groups.</li>
+<li>Developed to control for selection bias.</li>
+</ul>
+<div id="when-to-use-it" class="section level3">
+<h3>When to use it?</h3>
+<p><strong>Example: Scholarships and College GPA</strong></p>
+<ul>
+<li>Does getting a National Merit Scholarship improve college GPA?</li>
+<li>They wanted to know the causal effect of the program on the differences in grades between students who receive the scholarship and those who don’t.</li>
+</ul>
+<p>The national scholarship is awarded based on scoring above a certain threshold on the PSAT, which is a test usually taken by high school students. <strong>The key to estimating the effect of the scholarship is that threshold.</strong></p>
+<ul>
+<li>Right around the threshold, individuals are pretty much the same; however, students above the threshold receive the scholarship, and students below don’t.</li>
+<li>In essence, RDD compares the students above and below the threshold and considers the difference in outcomes to be the program effect.</li>
+<li>The assignment variables needs to be a continuous variable, with a range of values on either side of the cut-point.</li>
+</ul>
+<p>Students with test scores, X , greater than or equal to a cutoff value c received the award, and those with scores below the cutoff were denied the award. This generated a sharp discontinuity in the ‘treatment’ (receiving the award) as a function of the test score (<a href="https://us.sagepub.com/en-us/nam/the-sage-handbook-of-regression-analysis-and-causal-inference/book238839#contents">Lee and Lamieux, 2015</a>).</p>
+</div>
+<div id="conceptual-framework" class="section level3">
+<h3>Conceptual framework</h3>
+<p><img src="C:/Users/munta/Documents/simple_rd.jpg" width="800px" /></p>
+<p>There appears to be no reason, other than the merit award, for future academic outcomes, Y , to be a discontinuous function of the test score. This simple reasoning suggests attributing the discontinuous jump in Y at c to the causal effect of the merit award.</p>
+</div>
+<div id="key-terms" class="section level3">
+<h3>Key terms</h3>
+<ul>
+<li><strong>Running/forcing variable</strong>: Index or measure that determines eligibility.</li>
+<li><strong>Cutoff/cutpoint/threshold</strong>: Number that formally assigns access to program.</li>
+<li><strong>Outcome</strong>: The thing we want to see the causal effect on.</li>
+<li><strong>Bandwidth</strong>: Window around cutoff where we focus your analysis. All we really care about is the area right around the cutoff. Observations far away from the cutoff don’t really matter.</li>
+<li><strong>Kernel</strong>: Method for assigning importance to values by distance to cutoff. We care the most about observations right by the cutoff, so give them extra weight.</li>
+<li><strong>Noncompliance</strong>: People on the margin of the discontinuity might end up in/out of the program.</li>
+</ul>
+</div>
+<div id="averate-treatment-effect-ate" class="section level3">
+<h3>Averate treatment effect (ATE)</h3>
+<p>It is typically imagined that for each individual <code>i</code>, there exists a pair of ‘potential’ outcomes: - <span class="math inline">\(Y_i\)</span>(1) for what would occur if the individual were exposed to the treatment and <span class="math inline">\(Y_i\)</span>(0) if not exposed.</p>
+<p>The fundamental problem of causal inference is that we cannot observe the pair <span class="math inline">\(Y_i\)</span>(1) and <span class="math inline">\(Y_i\)</span>(0) simultaneously. We therefore typically focus on <strong><code>average effects of the treatment</code></strong>, that is, averages of <span class="math inline">\(Y_i\)</span>(1) - <span class="math inline">\(Y_i\)</span>(0) over (sub)populations, rather than on unit-level effects (<a href="https://us.sagepub.com/en-us/nam/the-sage-handbook-of-regression-analysis-and-causal-inference/book238839#contents">Lee and Lamieux, 2015</a>).</p>
+<ul>
+<li>The local average treatment effect also compares outcomes with and without treatment but is conditional on some characteristic x.</li>
+</ul>
+<p><img src="C:/Users/munta/Documents/non-linear_rd.jpg" width="800px" /></p>
+<p>In the RD setting, we can imagine there are two underlying relationships between average potential outcomes and X, represented by <span class="math inline">\(E[Y_i(1)|X]\)</span> and <span class="math inline">\(E[Y_i(0)|X]\)</span>, as in Figure 14.2.</p>
+<p>But by definition of the RD design, all individuals to the right of the cutoff (c = 2 in this example) are exposed to treatment, and all those to the left are denied treatment. Therefore, we only observe <span class="math inline">\(E[Y_i(1)|X]\)</span> to the right of the cutoff and <span class="math inline">\(E[Y_i(0)|X]\)</span> to the left of the cutoff, as indicated in the figure.</p>
+<p>The difference is the <strong>‘average treatment effect (ATE)’</strong> at the cutoff <code>c</code>.</p>
+<p><span class="math display">\[E[Y_i(1) - Y_i(0)|X] = c\]</span></p>
+</div>
+<div id="sharp-vs.-fuzzy" class="section level3">
+<h3>Sharp vs. Fuzzy</h3>
+<p><strong>Sharp</strong></p>
+<p>In ‘sharp’RD design, where all individuals above the cutoff receive the treatment, while none of those below the cutoff get treated.</p>
+<p><strong>Fuzzy</strong></p>
+<p>Used in instances where some eligible fail to receive treatment and/or ineligible receive it (e.g. due to self-selection or administrative overrides). The fuzzy version is more often utilized in practice.</p>
+<p>To calculate the effect of the treatment: a) Regress observable characteristics on outcomes to obtain the ‘outcome discontinuity’, and b) Regress observable characteristics on the treatment indicator to obtain ‘treatment discontinuity.’ Then, <strong>Treatment-effect = outcome discontinuity / treatment-discontinuity</strong></p>
+</div>
+<div id="assumptions" class="section level3">
+<h3>Assumptions</h3>
+<ul>
+<li>Cutoff criterion
+<ul>
+<li>Observed variable remains constant</li>
+<li>Selection threat if the cutoff criterion changes</li>
+</ul></li>
+<li>Continuous Pretest Distribution
+<ul>
+<li>Both groups derive from one continuous pretest distribution</li>
+<li>Group division determined by the cutoff criterion</li>
+</ul></li>
+<li>Program Implementation
+<ul>
+<li>All recipients receive the same treatment in the same manner.</li>
+</ul></li>
+</ul>
+</div>
+<div id="advantages" class="section level3">
+<h3>Advantages</h3>
+<p>In addition to providing a highly credible and transparent way of estimating program effects, RD designs can be used in a wide variety of contexts covering a large number of important economic and social questions.</p>
+<ul>
+<li>RDD is considered an excellent way to extract causal estimates from observational data.</li>
+<li>This approach is used specifically in the instance of when there is a <strong>exogenous</strong> cutoff score on a variable.</li>
+<li>Does not assume that treatment and comparison groups begin at equal places before treatment</li>
+<li>Cutoff criterion to select groups
+<ul>
+<li>Pre-determined</li>
+<li>Completely known</li>
+</ul></li>
+<li>An alternative to randomized control trial experiments</li>
+</ul>
+</div>
+<div id="disadvantages" class="section level3">
+<h3>Disadvantages</h3>
+<ul>
+<li>Demands lots of data, since we are throwing lots of it away.</li>
+</ul>
+</div>
+</div>
+<div id="notable-examples-of-rd-designs" class="section level2">
+<h2>Notable examples of RD designs:</h2>
+<ul>
+<li>Effect of Class Size on Student Achievement (Angrist &amp; Lavy, 1999)</li>
+<li>Effect of Head Start Funding on Child Mortality (Ludwig &amp; Miller, 2007)</li>
+<li>Effect of education on mortality (Albouy and Lequien, 2009)</li>
+<li>Skipping class in college and exam performance (Dobkin, Gil, &amp; Marion, 2009)</li>
+<li><a href="http://masteringmetrics.com/wp-content/uploads/2015/01/Carpenter-and-Dobkin-2009.pdf"><strong>Effect of Alcohol Consumption on Mortality (Carpenter and Dobkin, 2009)</strong></a></li>
+<li>Impact of Texas top 10% law on college enrollment (Niu &amp; Tienda, 2010)</li>
+<li><a href="http://masteringmetrics.com/wp-content/uploads/2015/01/Carpenter-and-Dobkin-2011.pdf"><strong>Minimum legal drinking age and public health (Carpenter and Dobkin, 2011)</strong></a></li>
+<li>Effect of income disparity in marriage (Pierce et al., 2012)</li>
+<li>Health effects of minimum legal drinking age (Conover and Scrimgeour, 2013)</li>
+<li>Effect of early vs. deferred HIV treatment on mortality (Bor et al., 2014)</li>
+</ul>
+</div>
+<div id="model-specification" class="section level2">
+<h2>Model Specification</h2>
+<p>An unbiased estimate of the fitted model can be written as: <span class="math display">\[y_i = \beta_0 + \beta_1x_i + \beta_2z_i + e_i\]</span></p>
+<p>Where,</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> = Posttest outcome variable</li>
+<li><span class="math inline">\(β_0\)</span> = Intercept</li>
+<li><span class="math inline">\(β_1\)</span> = Effect of independent variable</li>
+<li><span class="math inline">\(x_1\)</span> = Pretest independent variable</li>
+<li><span class="math inline">\(β_2\)</span> = Effect of dummy variable</li>
+<li><span class="math inline">\(z_i\)</span> = Dummy variable (0 = Control, 1 = Treatment)</li>
+<li><span class="math inline">\(e_i\)</span> = Error</li>
+</ul>
+<div id="doing-the-analysis-in-r" class="section level3">
+<h3>Doing the analysis in R</h3>
+<p>Thoemmes, Liao, and Jin (2017) in their article <a href="https://journals.sagepub.com/doi/pdf/10.3102/1076998616680587">The Analysis of the Regression-Discontinuity Design in R</a> describe the analysis of regression-discontinuity designs (RDDs) using the R packages rdd, rdrobust, and rddtools.</p>
+</div>
+</div>
+<div id="carpenter-and-dobkin-2009" class="section level2">
+<h2>Carpenter and Dobkin (2009)</h2>
+<p><a href="http://masteringmetrics.com/wp-content/uploads/2015/01/Carpenter-and-Dobkin-2009.pdf">Carpenter, C., &amp; Dobkin, C. (2009)</a>. American Economic Journal: Applied Economics, 1(1), 164-82.</p>
+<ul>
+<li><p>They estimate the effect of alcohol consumption on mortality using the minimum drinking age in a regression discontinuity design.</p></li>
+<li><p>They found large and immediate increases in drinking at age 21, including a 21 percent increase in recent drinking days. - They also found a discrete 9 percent increase in the mortality rate at age 21, primarily due to motor vehicle accidents, alcohol-related deaths, and suicides.</p></li>
+</ul>
+<p>Download the MLDA dataset <strong>AEJfigs.dta</strong> from the <a href="http://www.masteringmetrics.com/resources/">Mastering Metrics website under “Chapter 4”</a>. The only two variables we will need for our analysis are <strong>agecell</strong> which gives age in years (with a decimal point since the ages are binned) and <strong>all</strong> which gives mortality rates per 100,000 individuals.</p>
+<div id="load-and-summarize-data" class="section level3">
+<h3>Load and summarize data</h3>
+<pre class="r"><code>#rm(list = ls())
+mlda &lt;- read_dta(&#39;C:/Users/munta/Google Drive/#Summer 2020/Regression Discontinuity/mlda.dta&#39;)
+#names(mlda) 
+
+#subset data
+mlda &lt;- subset(mlda, select = c(&quot;agecell&quot;, &quot;all&quot;, &quot;allfitted&quot;,
+                                        &quot;internal&quot;, &quot;internalfitted&quot;,
+                                        &quot;external&quot;,&quot;externalfitted&quot;))
+head(mlda)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["agecell"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["all"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["allfitted"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["internal"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["internalfitted"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["external"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["externalfitted"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"19.06849","2":"92.82540","3":"91.70615","4":"16.61759","5":"16.73813","6":"76.20782","7":"74.96801"},{"1":"19.15068","2":"95.10074","3":"91.88372","4":"18.32768","5":"16.92065","6":"76.77306","7":"74.96307"},{"1":"19.23288","2":"92.14429","3":"92.04906","4":"18.91105","5":"17.09884","6":"73.23324","7":"74.95023"},{"1":"19.31507","2":"88.42776","3":"92.20214","4":"16.10177","5":"17.27268","6":"72.32598","7":"74.92947"},{"1":"19.39726","2":"88.70494","3":"92.34292","4":"17.36352","5":"17.44216","6":"71.34142","7":"74.90076"},{"1":"19.47945","2":"90.19179","3":"92.47134","4":"17.87210","5":"17.60725","6":"72.31968","7":"74.86409"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="dummy-variable-over21" class="section level3">
+<h3>Dummy variable: Over21</h3>
+<pre class="r"><code>mlda$over21 =  as.numeric(mlda$agecell&gt;=21)
+mlda &lt;- na.omit(mlda)
+#summary(mlda)
+
+broom::tidy(mlda)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["column"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"agecell","2":"48","3":"21.00000","4":"1.1506850","5":"21.00000","6":"21.00000","7":"0.9863014","8":"19.06849","9":"22.93151","10":"3.863014","11":"0.000000000","12":"1.798958","13":"0.1660871","_row":"agecell"},{"1":"all","2":"48","3":"95.67272","4":"3.8310616","5":"95.68627","6":"95.59568","7":"2.7100983","8":"88.42776","9":"105.26835","10":"16.840591","11":"0.232112194","12":"2.648761","13":"0.5529661","_row":"all"},{"1":"allfitted","2":"48","3":"95.71075","4":"3.1671363","5":"95.17830","6":"95.48535","7":"2.2932777","8":"91.70615","9":"102.58908","10":"10.882935","11":"0.445710278","12":"1.917791","13":"0.4571368","_row":"allfitted"},{"1":"internal","2":"48","3":"20.28529","4":"2.2539070","5":"20.28887","6":"20.30310","7":"1.7011566","8":"15.97709","9":"24.37291","10":"8.395823","11":"0.002968309","12":"2.182642","13":"0.3253235","_row":"internal"},{"1":"internalfitted","2":"48","3":"20.27043","4":"2.0325913","5":"20.51333","6":"20.25823","7":"1.5948257","8":"16.73813","9":"24.04378","10":"7.305653","11":"-0.003127011","12":"1.900544","13":"0.2933793","_row":"internalfitted"},{"1":"external","2":"48","3":"75.38743","4":"2.9860077","5":"74.81325","6":"75.14938","7":"1.9714584","8":"71.34142","9":"83.33099","10":"11.989571","11":"0.776880062","12":"2.796221","13":"0.4309931","_row":"external"},{"1":"externalfitted","2":"48","3":"75.44032","4":"2.1004971","5":"74.73639","6":"75.12448","7":"0.7489014","8":"73.23121","9":"81.48454","10":"8.253334","11":"1.463268519","12":"4.122910","13":"0.3031806","_row":"externalfitted"},{"1":"over21","2":"48","3":"0.50000","4":"0.5052912","5":"0.50000","6":"0.50000","7":"0.5000000","8":"0.00000","9":"1.00000","10":"1.000000","11":"0.000000000","12":"1.000000","13":"0.0729325","_row":"over21"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="reproduce-figure-3-of-the-paper" class="section level3">
+<h3>Reproduce figure 3 of the paper</h3>
+<pre class="r"><code># computed deaths per 100,000 person years by dividing the total number of deaths at a particular age
+# by the total number of years lived at that age by everyone in the cohort.
+
+attach(mlda)
+Break.point = 21.00
+mlda &lt;- mlda[order(mlda$agecell),]
+
+# Define the position of tick marks
+v1 &lt;- c(19, 19.5,20, 20.5, 21, 21.5, 22, 22.5, 23)
+
+# Define the labels of tick marks
+v2 &lt;- c(&quot;19&quot;, &quot;19.5&quot;, &quot;20&quot;, &quot;20.5&quot;, &quot;21&quot;, &quot;21.5&quot;, &quot;22&quot;, &quot;22.5&quot;, &quot;23&quot;)
+
+plot(agecell, 
+     all, 
+     type=&quot;n&quot;, 
+     axes=FALSE,
+     #ann=FALSE, ## Removes label of axis
+     xaxt = &quot;n&quot;,
+     xlim=c(19, 23), 
+     ylim = c(0,120),
+     xlab = &quot;Age&quot;,
+     ylab = &quot;Deaths per 100,000 person-years&quot;,
+     frame.plot = FALSE,
+     xaxs=&quot;i&quot;,yaxs=&quot;i&quot;)
+
+# Add a title
+title(&quot;Figure 3. Age Profile for Death Rates&quot;)
+
+#Draw a box
+#box()
+#pos=0, lwd.ticks=0
+# Add an axis to the plot 
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03,pos=0,
+     las=0,cex.axis=1.05,
+     font.axis=5)
+# Add (modified) axes to the plot
+axis(2, las=2)
+axis(side = 2, 
+     tck=-.03,pos=0,
+     las=2,cex.axis=1.05,
+     font.axis=5)
+
+#We then fit two models, the second has a quadratic age term.
+
+#fit=lm(all~agecell, data = dat.1)
+#fit2=lm(all~agecell+I(agecell^2), data=dat.2)
+#summary(fit)
+#summary(fit2)
+#mlda$predfit = predict(fit, dat.1)
+#mlda$predfit2=predict(fit2,dat.2)
+
+
+points(agecell, 
+       all, 
+       col=&quot;gray&quot;, 
+       pch=18,cex = .7)
+with(subset(mlda,agecell &lt; Break.point),
+     lines(agecell,allfitted, lty = 3))
+with(subset(mlda,agecell  &gt;= Break.point),
+    lines(agecell,allfitted,lty = 3))
+
+
+
+
+points(agecell, 
+       internal, 
+       pch=0,cex = .4)
+with(subset(mlda,agecell &lt; Break.point),
+     lines(agecell,internalfitted, lty = 2, col=&quot;azure4&quot;, lwd=2))
+with(subset(mlda,agecell  &gt;= Break.point),
+    lines(agecell,internalfitted,lty = 2, col=&quot;azure4&quot;, lwd=2))
+
+
+points(agecell, 
+       external, 
+       col=&quot;black&quot;, 
+       pch=17,cex = .7)
+with(subset(mlda,agecell &lt; Break.point),
+     lines(agecell,externalfitted, lty = 1))
+with(subset(mlda,agecell  &gt;= Break.point),
+    lines(agecell,externalfitted,lty = 1))
+
+
+# Add subtitles for legend
+legend(21.5,60,
+       inset=.05,
+       cex = 0.7,
+       c(&quot;All&quot;,&quot;Internal&quot;, &quot;External&quot;,&quot;All fitted&quot; ,&quot;Internal fitted&quot;,&quot;External fitted&quot;),
+       pch = c(18,0,17,NA,NA,NA),
+       pt.cex= c(0.9,0.9,0.9,NA,NA,NA),
+       lty=c(NA,NA,NA,3,2,1), 
+       ncol = 2,
+       lwd=c(NA,NA,NA,1,1,1),
+       col=c(&quot;gray&quot;,&quot;black&quot;,&quot;black&quot;, &quot;azure4&quot;,&quot;azure4&quot;,&quot;black&quot;)
+)</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Figure 3 shows a sharp increase in overall mortality at age 21 of about 10 deaths per 100,000 person years. Grouping the deaths by cause reveals that for this age group the majority of deaths are due to external causes and the increase in deaths at age 21 is attributable largely to deaths due to external causes.</p>
+</div>
+<div id="simple-rd" class="section level3">
+<h3>Simple RD</h3>
+<pre class="r"><code>simple.rd = lm(all ~ agecell+over21, data = mlda)
+mlda$pred &lt;- predict(simple.rd)
+#summary(simple.rd)
+
+broom::tidy(simple.rd) %&gt;% 
+  knitr::kable(caption = &quot;Simple RDD Output&quot;, digits = 3) %&gt;% 
+  kableExtra::kable_styling(bootstrap_options = &quot;striped&quot;, full_width = FALSE)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Simple RDD Output
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std.error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+112.310
+</td>
+<td style="text-align:right;">
+12.668
+</td>
+<td style="text-align:right;">
+8.866
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+agecell
+</td>
+<td style="text-align:right;">
+-0.975
+</td>
+<td style="text-align:right;">
+0.632
+</td>
+<td style="text-align:right;">
+-1.541
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+over21
+</td>
+<td style="text-align:right;">
+7.663
+</td>
+<td style="text-align:right;">
+1.440
+</td>
+<td style="text-align:right;">
+5.320
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>We ran a simple OLS regression using the cut-point. In particular, the regression looks like:</p>
+<p><span class="math display">\[all.deaths=β_0 + β_1 ∗ Agecell + β_2 ∗ Over21\]</span></p>
+<ul>
+<li><span class="math inline">\(β_0\)</span> is the intercept that measures the average mortality rate for the comparison group at the discontinuity/jump. In Our case it is 112.31 deaths per 100,000 observations.</li>
+<li>The parameter <span class="math inline">\(β_2\)</span> is the effect of treatment (average treatment effect) or the difference in mortality between those above 21 and those below 21. It captures the jump in deaths at age 21. Above, we obtain an an estimate of <span class="math inline">\(β_2\)</span> equal to 7.7, ceteris paribus. This estimate indicates a substantial increase in mortality risk at the MLDA cutoff.</li>
+<li>The parameter <span class="math inline">\(β_1\)</span> is the underlying trend that accounts for the relationship between <strong>agecell</strong> and mortality risk. It is statistically insignifcant here.</li>
+</ul>
+<div id="graphical-representation" class="section level4">
+<h4>Graphical Representation</h4>
+<pre class="r"><code>#summary(mlda)
+plot(mlda$agecell,mlda$all, pch=17, frame.plot = FALSE,
+     xaxs=&quot;i&quot;,yaxs=&quot;i&quot;,
+     xlim=c(19,23), ylim=c(85,110),
+     main = &quot;A Simple RD regression  : \nFitted line for subsamples&quot;,
+     xlab = &quot;Age&quot;, ylab =&quot; All Deaths &quot;, cex.main=1, font.main=1)
+with(subset(mlda, over21==0),lines(agecell, pred, col=&quot;red&quot;, lty=3, lwd=3))
+with(subset(mlda, over21==1),lines(agecell, pred, col=&quot;blue&quot;, lty=3, lwd=3))</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>We can also plot the fitted line for the entire sample:</p>
+<pre class="r"><code>plot(mlda$agecell,mlda$all, pch=17, frame.plot = FALSE,
+     xaxs=&quot;i&quot;,yaxs=&quot;i&quot;,xlim=c(19,23), ylim=c(85,110),
+     main = &quot;A Simple RD regression  : \nFitted line across entire sample&quot;,
+     xlab = &quot;Age&quot;, ylab =&quot; All Deaths &quot;, cex.main=1, font.main=1)
+lines(mlda$agecell, mlda$pred, col=&quot;chocolate1&quot;, lty=2, lwd=2)</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="flexible-rd" class="section level3">
+<h3>Flexible RD</h3>
+<p>Now lets run another RD where not only the intercept, but also the slope can differ between the under- and over-21 subsamples.</p>
+<pre class="r"><code>flex.rd = lm(all ~ agecell+over21+I(agecell*over21), data = mlda)
+mlda$flex.pred &lt;- predict(flex.rd)
+#summary(flex.rd)
+
+broom::tidy(flex.rd) %&gt;% 
+  knitr::kable(caption = &quot;Flex RDD Output&quot;, digits = 3) %&gt;% 
+  kableExtra::kable_styling(bootstrap_options = &quot;striped&quot;, full_width = FALSE)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Flex RDD Output
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std.error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+76.251
+</td>
+<td style="text-align:right;">
+16.396
+</td>
+<td style="text-align:right;">
+4.650
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+agecell
+</td>
+<td style="text-align:right;">
+0.827
+</td>
+<td style="text-align:right;">
+0.819
+</td>
+<td style="text-align:right;">
+1.010
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+over21
+</td>
+<td style="text-align:right;">
+83.333
+</td>
+<td style="text-align:right;">
+24.357
+</td>
+<td style="text-align:right;">
+3.421
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I(agecell * over21)
+</td>
+<td style="text-align:right;">
+-3.603
+</td>
+<td style="text-align:right;">
+1.158
+</td>
+<td style="text-align:right;">
+-3.111
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+</tr>
+</tbody>
+</table>
+<p>We see what is reported looks different than before. But the estimate of the program is the same as before. The parameter of interest here, again , is <strong>“Over21”</strong> that measures the effect of the program but now it is combined in the interaction term with <strong>agecell</strong>. So, our marginal effect of being over21 is: <span class="math display">\[β_2 + β_3([agecell==21] × [over21==1])\]</span></p>
+<pre class="r"><code>83.3332 +(-3.6034*21)</code></pre>
+<pre><code>## [1] 7.6618</code></pre>
+<p>The estimate of the program is <strong>same</strong> as before.</p>
+<div id="graphical-representation-1" class="section level4">
+<h4>Graphical representation</h4>
+<p>We plot the output again</p>
+<pre class="r"><code>plot(mlda$agecell,mlda$all, 
+     pch=10, frame.plot = FALSE,
+     xaxs=&quot;i&quot;,yaxs=&quot;i&quot;,
+     xlim=c(19,23), ylim=c(85,110),
+     main = &quot;Flexible RD regression : \nFitted line for subsamples&quot;,
+     xlab = &quot;Age&quot;, ylab =&quot; All Deaths &quot;, 
+     cex.main=1, font.main=1)
+with(subset(mlda, over21==0),lines(agecell, flex.pred, col=&quot;red&quot;, lty=1, lwd=3))
+with(subset(mlda, over21==1),lines(agecell, flex.pred, col=&quot;blue&quot;, lty=1, lwd=3))</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>We can also plot the fitted line for the entire sample:</p>
+<pre class="r"><code>plot(mlda$agecell,mlda$all, 
+     pch=10, frame.plot = FALSE,
+     xaxs=&quot;i&quot;,yaxs=&quot;i&quot;,xlim=c(19,23), ylim=c(85,110),
+     main = &quot;Flexible RD regression: \nFitted line across entire sample&quot;,
+     xlab = &quot;Age&quot;, ylab =&quot; All Deaths &quot;, cex.main=1, font.main=1)
+lines(mlda$agecell, mlda$flex.pred, col=&quot;chocolate1&quot;, lty=1, lwd=3)</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="rdd-package" class="section level2">
+<h2>RDD Package</h2>
+<p>From the <a href="https://cran.r-project.org/web/packages/rdd/rdd.pdf">rdd</a> package we can use the <strong>RDestimate</strong> command on <strong>all~agecell</strong>, specifying our data and the cutoff option at age 21. <strong>RDestimate</strong> supports both sharp and fuzzy RDD. It conducts a local linear regressions are performed to either side of the cutpoint using the Imbens-Kalyanaraman optimal bandwidth calculation.</p>
+<pre class="r"><code>rdd_simple &lt;- RDestimate(all~agecell, data = mlda, cutpoint = 21)
+summary(rdd_simple)</code></pre>
+<pre><code>## 
+## Call:
+## RDestimate(formula = all ~ agecell, data = mlda, cutpoint = 21)
+## 
+## Type:
+## sharp 
+## 
+## Estimates:
+##            Bandwidth  Observations  Estimate  Std. Error  z value  Pr(&gt;|z|) 
+## LATE       1.6561     40            9.001     1.480       6.080    1.199e-09
+## Half-BW    0.8281     20            9.579     1.914       5.004    5.609e-07
+## Double-BW  3.3123     48            7.953     1.278       6.223    4.882e-10
+##               
+## LATE       ***
+## Half-BW    ***
+## Double-BW  ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## F-statistics:
+##            F      Num. DoF  Denom. DoF  p        
+## LATE       33.08  3         36          3.799e-10
+## Half-BW    29.05  3         16          2.078e-06
+## Double-BW  32.54  3         44          6.129e-11</code></pre>
+<ul>
+<li>We see that the coefficient called “LATE”, is our parameter of interest of the MLDA program on mortality.</li>
+<li>We observe that by default the “RDD” package chooses a bandwidth of “1.6561” with a “triangular kernel”</li>
+<li>The estimate of the treatment is much larger than the “simple RD” we ran above. We observe that deaths increase by 9.001 at the cutoff point of 21.</li>
+<li>The larger increase we observe is because of the choice of bandwidth that looks at observations around the cutoff makes the treatment and control group “look similar”. With this RDD framework, we are able to better capture the effect of MLDA on mortality among those close to 21.</li>
+<li>However, in our earlier analysis with the OLS regression in a simple RD design we used the entire sample of observations where the comparison between treatment and control becomes “less similar” with the use of the full sample. The full sample just reflects the average trend in mortality across the age cohorts.</li>
+</ul>
+<pre class="r"><code>plot(rdd_simple)</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div id="rdd-with-bandwidth-and-kernel" class="section level3">
+<h3>RDD with bandwidth and kernel</h3>
+<p>Re-running an RDestimate command, this time adding the options kernel = “rectangular” and bw=2.</p>
+<pre class="r"><code>library(rdd)
+rdd_kernelbw &lt;- RDestimate(all~agecell, data = mlda, cutpoint = 21,
+                           kernel = &quot;rectangular&quot;, bw=2)
+summary(rdd_kernelbw)</code></pre>
+<pre><code>## 
+## Call:
+## RDestimate(formula = all ~ agecell, data = mlda, cutpoint = 21, 
+##     bw = 2, kernel = &quot;rectangular&quot;)
+## 
+## Type:
+## sharp 
+## 
+## Estimates:
+##            Bandwidth  Observations  Estimate  Std. Error  z value  Pr(&gt;|z|) 
+## LATE       2          48            7.663     1.273       6.017    1.776e-09
+## Half-BW    1          24            9.753     1.902       5.128    2.929e-07
+## Double-BW  4          48            7.663     1.273       6.017    1.776e-09
+##               
+## LATE       ***
+## Half-BW    ***
+## Double-BW  ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## F-statistics:
+##            F      Num. DoF  Denom. DoF  p        
+## LATE       29.47  3         44          2.651e-10
+## Half-BW    16.82  3         20          2.167e-05
+## Double-BW  29.47  3         44          2.651e-10</code></pre>
+<ul>
+<li>We see that with the larger bandwidth we are essentially capturing the entire sample and our estimates are closer to when we ran the “simple RD” design in the beginning.</li>
+<li>In an RDD framework, we always need to balance our choice of large and small bandwidth. Larger bandwidth make the comparison between the treatment group and control group “less similar”.</li>
+<li>Secondly, the rectangular kernel, is a uniform kernel that gives equal weight to all observations within the bandwidth. However, the default kernel choice in rdd is triangular that weights those very near the curtoff higher than those away from the cutoff.</li>
+<li>We see the standard error with LATE is smaller than the “default” RDD with bandwidth of 1.6. Hence, with a larger bandwidth we might gain smaller standard error but we lose on the true effect.</li>
+<li>Changing bandwidth can have 1) estimation implication where increasing bandwidth captures more observations and less standard errors and 2) validity implication. Larger bandwidth makes the treatment comparison cohorts less similar.</li>
+</ul>
+<pre class="r"><code>plot(rdd_kernelbw)</code></pre>
+<p><img src="rd_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+</div>
+<div id="take-aways" class="section level2">
+<h2>Take Aways</h2>
+<ol style="list-style-type: decimal">
+<li>The regression discontinuity design is a statistical approach that utilizes threshold based decision making to estimate causal estimates of different interventions.</li>
+<li>Regression discontinuity is relatively simple to implement, transparent, and provides “real world” effects of treatments and policies.</li>
+<li>Graphical presentation and statistical analysis of data.</li>
+<li>Despite the ubiquity of threshold based decision making, regression discontinuity is underutilized.</li>
+</ol>
+</div>
+<div id="to-learn-more" class="section level2">
+<h2>To Learn More</h2>
+<ul>
+<li>Chapter 14 of <a href="https://us.sagepub.com/en-us/nam/the-sage-handbook-of-regression-analysis-and-causal-inference/book238839#contents">Regression Discontinuity Designs in Social Sciences by Lee and Lamieux, 2015</a>.</li>
+<li>Chapter 6 of <a href="https://utsa.primo.exlibrisgroup.com/permalink/01UTXSANT_INST/1du13se/cdi_askewsholts_vlebooks_9781400829828">Mostly Harmless Econometrics by Angrist and Pischke, 2009</a>.</li>
+<li><a href="https://www.princeton.edu/~davidlee/wp/RDDEconomics.pdf">Regression Discontinuity Designs in Economics by Lee and Lemieux, 2010</a>.</li>
+<li>RDD in medicine, epidemiology, and public health: meta-analysis by <a href="https://pubmed.ncbi.nlm.nih.gov/25579639/">Moscoe, Bor, Bärnighausen, 2015</a>.</li>
+<li><a href="https://sites.google.com/site/rdpackages/">R and Stata software, replication codes, and other supplementary materials</a>.</li>
+</ul>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ul>
+<li><a href="https://doi.org/10.1017/9781108684606" class="uri">https://doi.org/10.1017/9781108684606</a></li>
+<li><a href="https://evalf19.classes.andrewheiss.com/class/10-class/" class="uri">https://evalf19.classes.andrewheiss.com/class/10-class/</a></li>
+<li><a href="https://rpubs.com/AI_Economist/RDDeconometrics" class="uri">https://rpubs.com/AI_Economist/RDDeconometrics</a></li>
+<li><a href="http://faculty.smu.edu/kyler/courses/7312/presentations/2013/axel/axel.pdf" class="uri">http://faculty.smu.edu/kyler/courses/7312/presentations/2013/axel/axel.pdf</a></li>
+<li><a href="https://www.youtube.com/watch?v=tWRsYWSP3fM&amp;t=5s" class="uri">https://www.youtube.com/watch?v=tWRsYWSP3fM&amp;t=5s</a></li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

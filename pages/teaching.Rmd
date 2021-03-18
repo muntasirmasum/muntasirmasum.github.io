@@ -1,0 +1,19 @@
+---
+title: " "
+pagetitle: "Muntasir Masum"
+---
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
+
+### Adjunct Lecturer Classes
+
+Summer 2020: Analysis and Assessment for Public Administration, [Public Administration, UTSA](https://hcap.utsa.edu/public-administration/)
+
+Spring 2020: Analysis and Assessment for Public Administration, [Public Administration, UTSA](https://hcap.utsa.edu/public-administration/)
+
+Main Role: Introducing research methods
+
+Software used: SPSS
+
+Data: General Social Survey (GSS)

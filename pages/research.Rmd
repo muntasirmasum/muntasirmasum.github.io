@@ -1,0 +1,43 @@
+---
+title: ""
+pagetitle: "Muntasir Masum"
+output:    
+  html_document: 
+    df_print: paged
+    toc: yes
+    toc_depth: 5
+    toc_float: TRUE
+    number_sections: FALSE
+    section_divs: TRUE
+    self_contained: TRUE
+    code_download: FALSE
+    highlight: "textmate"
+---
+
+## Publications
+
+RIFFE, T, ACOSTA, E., …, **MASUM, M.** 2021 (forthcoming). “COVerAGE-DB: A database of age-structured COVID-19 cases and deaths.” International Journal of Epidemiology. [DOI: 10.1101/2020.09.18.20197228](https://www.medrxiv.org/content/10.1101/2020.09.18.20197228v2)
+
+HUANG, Y., LIU, H., **MASUM, M.** 2020. “Adverse Childhood Experiences and Physical and Mental Health of Adults: Assessing the Mediating Role of Cumulative Life-course Poverty.” American Journal of Health Promotion. I-II. [DOI: 10.1177/0890117120982407](https://journals.sagepub.com/doi/abs/10.1177/0890117120982407)
+
+**MASUM, M.** 2015. “The Process of Capital Accumulation through Real-Estate Development: the case of Dhaka City.” Social Science Review 32(2):195-210.
+
+**MASUM, M.** 2010. “Globalization and Commercialization of Culture: Analyzing the Consumer Attitude and Response of the Youth of Dhaka City.” The Global Studies Journal 3(3):71-81. [DOI: https://doi.org/10.18848/1835-4432/CGP/v03i03/40720](https://cgscholar.com/bookstore/works/globalization-and-commercialization-of-culture-analyzing-the-consumer-attitude-and-response-of-the-youth-of-dhaka-city)
+
+### Manuscript under review
+
+**MASUM, M.**, SPARKS, J. “Association of Labor Force Status and Alcohol Drinking among Women in the United States: Estimating All-Cause Mortality with NHIS-LMF, 2001 – 2013”.
+
+**MASUM, M.**, HOWARD, J., GRIGSBY, T. “Combined alcohol use and weight status effects on mortality risk among adults: Analysis of the National Health Interview Survey linked mortality files, 2001-2015”.
+
+## Dissertation Research
+
+My dissertation examines how health and mortality risks are associated with alcohol consumption. Structured across three analytical chapters, my dissertation focuses on:
+
+1) cohort mortality variation and the minimum legal drinking age act (MLDA) of 1984; 
+2) recent changes among women’s labor market participation and alcohol consumption related mortality risks; and 
+3) physical and mental health outcomes among young adults attributable to drinking and risky behavior.
+
+### Work in progress
+
+**MASUM, M**. The Impact of Adverse Childhood Experiences on Health Outcomes in Adulthood: Analyzing the Mediating Effects of Substance Use Disorder in the Add Health Data.

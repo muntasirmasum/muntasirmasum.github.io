@@ -2,6 +2,9 @@
 
 ---
 
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
+
 Feel free to reach me.
 
 **Department of Demography**<br>

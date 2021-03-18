@@ -5,12 +5,12 @@ navbar:
   left:
     - text: "Research"
       href: research.html
-    - text: "Speaking"
+    - text: "Conferences"
       href: talks.html
-    - text: "Programming"
-      href: software.html
     - text: "Teaching"
       href: teaching.html
+    - text: "Coding"
+      href: coding.html
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
@@ -24,5 +24,5 @@ navbar:
       href: https://www.linkedin.com/in/muntasirmasum/
 output:
   html_document:
-    theme: paper
+    theme: darkly
     css: 'styles.css'
