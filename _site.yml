@@ -17,7 +17,7 @@ navbar:
       href: coding.html
   right:
     - icon: fas fa-paper-plane
-      href: contact.html
+      href: mailto:muntasir1124@gmail.com
     - icon: ai-cv ai-lg
       href: ./files/Masum_Muntasir_CV.pdf
     - icon: fab fa-github
