@@ -14,6 +14,8 @@ output:
     highlight: "textmate"
 ---
 
+<br>
+
 ## **Publications**
 
 RIFFE, T, ACOSTA, E., ..., **MASUM, M.** 2021 (forthcoming). "COVerAGE-DB: A database of age-structured COVID-19 cases and deaths." International Journal of Epidemiology. [DOI: 10.1101/2020.09.18.20197228](https://www.medrxiv.org/content/10.1101/2020.09.18.20197228v2)

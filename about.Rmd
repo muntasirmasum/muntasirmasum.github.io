@@ -6,8 +6,11 @@ pagetitle: "Muntasir Masum"
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
 
+<br>
 
 I have been interested in adult health and disparities from an early stage of graduate school, completing qualifying exams in health (with an emphasis in mortality), statistical methods and multilevel models, and demographic techniques. 
+
+<br>
 
 ## Dissertation Research
 
@@ -17,6 +20,7 @@ My doctoral thesis is a study of alcohol drinking behavior and adult mortality r
     - recent changes among women’s labor market participation and alcohol consumption related mortality risks; and 
     - physical and mental health outcomes among young adults attributable to drinking and risky behavior.
 
+_______________________________________________________________________________________________________________________________________________
 
 ## Professional Affiliation
   - [Population Association of America (PAA)](https://www.populationassociation.org/home)

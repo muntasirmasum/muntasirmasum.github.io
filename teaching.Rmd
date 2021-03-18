@@ -6,6 +6,8 @@ pagetitle: "Muntasir Masum"
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
 
+<br>
+
 ### Adjunct Lecturer Classes
 
 Summer 2020: Analysis and Assessment for Public Administration, [Public Administration, UTSA](https://hcap.utsa.edu/public-administration/)
