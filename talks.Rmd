@@ -6,12 +6,10 @@ pagetitle: "Muntasir Masum"
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
 
-### Conferences
+### Presentations/Posters
 
 2021  **Population Association of America (PAA)**. Virtual
 
 2020	**Interdisciplinary Association for Population Health Science (IAPHS)**, Sept.30 – Oct.2, 2020, Virtual.
 
 2019	**Southern Demographic Association (SDA)**, October, New Orleans, LA.
-
-2019  **SACNAS**, Honolulu, HI.
