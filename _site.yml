@@ -16,7 +16,7 @@ navbar:
     - text: "Coding"
       href: coding.html
   right:
-    - icon: fas fa-envelope-open
+    - icon: fas fa-paper-plane
       href: contact.html
     - icon: ai-cv ai-lg
       href: ./files/Masum_Muntasir_CV.pdf
