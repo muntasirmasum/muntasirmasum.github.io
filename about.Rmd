@@ -6,8 +6,20 @@ pagetitle: "Muntasir Masum"
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="academicicons/css/academicons.min.css"/>
 
-## Affiliation
-  - Population Association of America
-  - American Sociological Association
-  - Southern Demographic Association
-  - Interdisciplinary Association for Population Health Science
+
+I have been interested in adult health and disparities from an early stage of graduate school, completing qualifying exams in health (with an emphasis in mortality), statistical methods and multilevel models, and demographic techniques. 
+
+## Dissertation Research
+
+My doctoral thesis is a study of alcohol drinking behavior and adult mortality risks in the United States. This work explores key demographic, socioeconomic, and anthropometric factors at the individual level that contribute to alcohol drinking and its consequence on adult mortality and health outcomes. Structured across three objectives, my dissertation focuses on:
+
+ - 1. cohort mortality variation and the minimum legal drinking age act (MLDA) of 1984; 
+ - 2. recent changes among women’s labor market participation and alcohol consumption related mortality risks; and 
+ - 3. physical and mental health outcomes among young adults attributable to drinking and risky behavior.
+
+
+## Professional Affiliation
+  - [Population Association of America (PAA)](https://www.populationassociation.org/home)
+  - [American Sociological Association (ASA)](https://www.asanet.org/)
+  - [Southern Demographic Association (SDA)](https://www.sda-demography.org/)
+  - [Interdisciplinary Association for Population Health Science (IAPHS)](https://iaphs.org/)
