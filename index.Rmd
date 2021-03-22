@@ -41,6 +41,6 @@ description: Muntasir Masum is a demographer at the University of Texas at San A
 
 <br>
 
-<a class="twitter-timeline" href="https://twitter.com/Muntasir_M?ref_src=twsrc%5Etfw">Tweets by Muntasir_M</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/Muntasir_M?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @Muntasir_M</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
