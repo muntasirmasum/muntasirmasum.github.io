@@ -33,6 +33,14 @@ description: Muntasir Masum is a demographer at the University of Texas at San A
 
 <br>
 
+<!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/muntasirm', text: 'Schedule time with me', color: '#00a2ff', textColor: '#ffffff', branding: true }); }</script>
+<!-- Calendly badge widget end -->
+
+<br>
+
 <a class="twitter-timeline" href="https://twitter.com/Muntasir_M?ref_src=twsrc%5Etfw">Tweets by Muntasir_M</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
