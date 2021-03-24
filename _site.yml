@@ -16,7 +16,7 @@ navbar:
       href: blog.html
     - text: "Coding"
       href: coding.html
-    - text: CV
+    - text: Download CV
       href: ./files/Masum_Muntasir_CV.pdf
       
   right:
