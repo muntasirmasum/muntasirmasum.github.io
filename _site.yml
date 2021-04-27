@@ -17,7 +17,7 @@ navbar:
     - text: "Coding"
       href: coding.html
     - text: Download CV
-      href: ./files/Masum_Muntasir_CV.pdf
+      href: ./files/Masum_Muntasir_CV_Apr_2021.pdf
       
   right:
     - icon: fas fa-envelope-open
