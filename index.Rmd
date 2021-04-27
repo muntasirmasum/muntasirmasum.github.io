@@ -22,12 +22,12 @@ description: Muntasir Masum is a demographer at the University of Texas at San A
 
 #### My research interests are:
 
-      - Mortality 
+      - Population and Health 
       - Aging 
       - Race and Ethnicity
       - Health Disparities 
       - Mental Health 
-      - Causal inference.
+      - Causal inference
 
 >I earned my MA in Sociology in 2012 from the McMaster University in Hamilton, ON, Canada. I am looking for a postdoctoral position to further my career in academia.
 
