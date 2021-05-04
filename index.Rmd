@@ -18,7 +18,7 @@ description: Muntasir Masum is a demographer at the University of Texas at San A
 
 <div class = "col-md-9">
 
->I earned my **PhD** in [Demography](https://hcap.utsa.edu/demography/) at the [University of Texas at San Antonio (UTSA)](https://www.utsa.edu/) in Spring 2021. My dissertation looked at the association of alcohol, health and mortality in the United States. Currently I am employed as a **Graduate Research Assistant** in the TxDOT project at the [Institute for Demographic and Socioeconomic Research (IDSER)](https://idser.utsa.edu/) at UTSA.
+>I earned my **PhD** in [Demography](https://hcap.utsa.edu/demography/) at the [University of Texas at San Antonio (UTSA)](https://www.utsa.edu/) in Spring 2021. Currently I am employed as a **Graduate Research Assistant** in the TxDOT project at the [Institute for Demographic and Socioeconomic Research (IDSER)](https://idser.utsa.edu/) at UTSA.
 
 #### My research interests are:
 
